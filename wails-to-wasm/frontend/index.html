@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("json.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <!-- <img id="logo" class="logo"> -->
+    <img id="logo" class="logo" src="../assets/images/logo-universal.png">
+    <!-- <img id="logo" class="logo" src="logo-universal.png"> -->
+    <!-- <div class="result" id="result">Please enter your name below 👇</div> -->
+    <div class="greeting" id="greeting">Please enter your name below 👇</div>
+    <div class="input-box" id="input">
+        <!-- <input class="input" id="name" type="text" autocomplete="off" /> -->
+        <input class="input" id="nameInput" type="text" autocomplete="off" />
+        <!-- <button class="btn" onclick="greet()">Greet</button> -->
+        <button class="btn" onclick="greetFunction(nameInput.value)">Greet</button>
+    </div>
+</body>
+<script>
+    var greetFunction = function (input) {
+        var result = greetPerson(input)
+        if ((result != null) && ('error' in result)) {
+            console.log("Go return value", result)
+            alert(result.error)
+        }
+    }
+</script>
+
+</html>

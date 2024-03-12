@@ -10,5 +10,5 @@ Go to a browser and enter ```localhost:9090``` in the address window.
 
 ## Deployment
 
-A example of a deployment method can be found [here][https://github.com/tataDan/wails-to-wasm-app/].
+A example of a deployment method can be found [here](https://github.com/tataDan/wails-to-wasm-app/).
 
